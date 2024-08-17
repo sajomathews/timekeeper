@@ -15,7 +15,7 @@ class Layout:
 
     def render(self, *children, **attributes):
         nav_bar = NavBar(self.menu_items, self.page)
-        page = Body(cls='min-h-full')(
+        page = Body(cls='min-h-full bg-base-100')(
             nav_bar.render(),
             main_content(self.title, *children, **attributes)
         )
@@ -34,7 +34,7 @@ def main_content(title: str, *children):
 def header(text: str):
     return Header(
             Div(cls='mx-auto max-w-7xl px-4 sm:px-6 lg:px-8')(
-                H1(text, cls='text-3xl font-bold leading-tight tracking-tight text-gray-900')
+                H1(text, cls='text-3xl font-bold leading-tight tracking-tight text-base-content')
             )
         )
 

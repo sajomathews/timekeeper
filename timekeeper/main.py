@@ -12,11 +12,12 @@ from timekeeper.domain.todos.interfaces import ROOT
 
 
 # Setup tailwindcss from CDN
-tlink = Script(src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,container-queries")
+tlink = Script(src="https://cdn.tailwindcss.com?plugins=typography")
+daisyui = Link(href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css", rel="stylesheet", type="text/css")
 alpinejs = Script(defer=True, src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js")
 
 # setup the main application
-app = fh.FastHTMLWithLiveReload(hdrs=(tlink,alpinejs))
+app = fh.FastHTMLWithLiveReload(hdrs=(alpinejs, daisyui, tlink))
 
 # setup the navigation
 MENU = [
