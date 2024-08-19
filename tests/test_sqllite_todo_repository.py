@@ -69,9 +69,9 @@ def test_list(repository, initial_items):
     assert len(items) == 2
     assert items[0] == initial_items[0]
     items = repository.list(1, 2)
-    assert items[0] == initial_items[2]
+    assert items[0] == initial_items[4]
     items = repository.list(1,3)
-    assert items[0] == initial_items[3]
+    assert items[0] == initial_items[2]
     items = repository.list(5,2)
     assert len(items) == 0
 

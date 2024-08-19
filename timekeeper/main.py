@@ -7,8 +7,13 @@ from timekeeper.domain.todos.commands import TodosCommands
 from timekeeper.domain.todos.queries import TodoQueryEngine
 from timekeeper.components.navigation import MenuItem
 from timekeeper.components.layout import Layout, MAIN_CONTENT_ID, main_content
-from timekeeper.config import Page, Routes
+from timekeeper.config import Page, Routes, DATABASE
 from timekeeper.domain.todos.interfaces import ROOT
+from timekeeper import migrations
+
+# # Run migrations if required
+# migrator = migrations.Migrations(DATABASE)
+# migrator.ensure_version(migrations.VERSIONS)
 
 
 # Setup tailwindcss from CDN
@@ -30,7 +35,7 @@ MENU = [
 menu_items = {item.id: item for item in MENU}
 
 # dependency injection
-repository = TodosSQLiteRepository('data/timekeeper.db')
+repository = TodosSQLiteRepository(DATABASE)
 commander = TodosCommands(repository)
 query_engine = TodoQueryEngine(repository)
 

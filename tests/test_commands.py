@@ -23,15 +23,15 @@ def test_create_command(commander):
 
 def test_create_subtask(commander):
     parent = commander.create('Parent')
-    child = commander.create_subtask(parent.id, "Child")
+    child, _ = commander.create_subtask(parent.id, "Child")
     assert child.id is not None 
     assert child.parent == parent.id 
 
 def test_mark_as_done(commander):
     t1 = commander.create('T1')
-    t2 = commander.create_subtask(t1.id, 'T2')
-    t3 = commander.create_subtask(t1.id, 'T3')
-    t4 = commander.create_subtask(t2.id, 'T4')
+    t2, _ = commander.create_subtask(t1.id, 'T2')
+    t3, _= commander.create_subtask(t1.id, 'T3')
+    t4, _ = commander.create_subtask(t2.id, 'T4')
     commander.mark_as_done(t2.id)
     test = commander.repository.read(t2.id)
     assert test.id == t2.id

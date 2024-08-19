@@ -15,3 +15,5 @@ class Routes(StrEnum):
     TEAM = '/team'
     NOTES = '/notes'
     HABITS = '/habits'
+
+DATABASE = 'data/timekeeper.db'
